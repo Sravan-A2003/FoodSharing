@@ -66,9 +66,9 @@ Email: 9921004040@klu.ac.in
 Garaga Karthikeya
 Email: 9921004216@klu.ac.in
 
-Harsha
+P Sai Harsha Vardhana Reddy
 Email: 9921004625@klu.ac.in
 
-Vikas
+Sapavat Vikas
 Email: 9921004639@klu.ac.in
 
