@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="Signup.css">
+</head>
+
+<body>
+    <div class="sign">
+        <div>
+            <h1>Sign&nbsp;Up</h1>
+            <label for="mail">Mail-ID</label><br>
+            <input type="email" id="mail" name="mail1" placeholder="Enter Mail Id"><br>
+            <input type="text" name="otp" id="otp" placeholder="Enter OTP">
+            <button id="subm">Send OTP</button>
+        </div>
+    </div>
+    <script>
+        document.querySelector('#subm').addEventListener('click', (eve) => {
+            x = document.querySelector('#mail').value;
+            p = document.querySelector('#otp').value;
+            if (x === '') {
+                alert('Enter Username');
+            }
+            else {
+                if (document.querySelector('#subm').innerHTML === 'Send OTP') {
+                    fetch('/otp1/'+x)
+                    .then(res=>res.json())
+                    .then(data=>{
+                        if(data.success){
+                            document.querySelector('#otp').style.display = 'block';
+                            document.querySelector('#subm').innerHTML = 'Verify';
+                            alert('OTP Sent Successfully')
+                        }
+                        else{
+                            alert(data.message)
+                        }
+                    })
+                }
+                else {
+                    if (p === '') {
+                        alert('Enter the OTP')
+                    }
+                    else {
+                        fetch('/verify1/' + x + '/' + p)
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert('Password sent to you mail id');
+                                    window.location.href = 'login.html'
+                                }
+                                else {
+                                    alert(data.message)
+                                }
+                            })
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        function change() {
+            document.location.href = 'login.html'
+        }
+    </script>
+</body>
+
+</html>
